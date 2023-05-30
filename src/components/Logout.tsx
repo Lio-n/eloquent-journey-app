@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+/* import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PublicRoutes } from '../../models';
 import { resetUser, UserKey } from '../../redux/states/user';
@@ -15,3 +15,5 @@ function Logout() {
   return <button onClick={logOut}>Log Out</button>;
 }
 export default Logout;
+ */
+export {};

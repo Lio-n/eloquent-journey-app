@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+import FormLogin from "@/components/Login/formLogin";
+
+/* import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PrivateRoutes, PublicRoutes, Roles } from '../../models';
@@ -30,4 +32,17 @@ function Login() {
     </div>
   );
 }
+export default Login;
+ */
+
+const Login = () => {
+  return (
+    <>
+      <h1>Login Form</h1>
+
+      <FormLogin />
+    </>
+  );
+};
+
 export default Login;

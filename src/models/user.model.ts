@@ -1,8 +1,8 @@
-import { Roles } from './roles';
-
-export interface UserInfo {
+interface UserInfo {
   id: number;
-  name: string;
+  fullname: string;
   email: string;
-  rol: Roles;
+  articles: number[];
 }
+
+export default UserInfo;
