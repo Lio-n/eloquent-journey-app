@@ -37,11 +37,11 @@ export default Login;
 
 const Login = () => {
   return (
-    <>
-      <h1>Login Form</h1>
+    <article style={{ maxWidth: "30rem", margin: "0" }}>
+      <h1 style={{ marginBottom: "1.5rem" }}>Sign in</h1>
 
       <FormLogin />
-    </>
+    </article>
   );
 };
 

@@ -15,6 +15,20 @@
   -webkit-text-size-adjust: 100%; */
   --primary: #d81b60;
 }
+img {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--border-radius);
+  object-fit: cover;
+}
+
+.center_items {
+  display: grid;
+  place-items: center;
+}
+.invalid-border-color {
+  border-color: var(--form-element-invalid-border-color);
+}
 /* 
 a {
   font-weight: 500;
