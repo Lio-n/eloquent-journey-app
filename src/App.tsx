@@ -9,6 +9,7 @@ import { PrivatePaths } from "./routes/path.routes";
 import PublicRoutes from "./routes/public.routes";
 import AuthGuard from "./guards/auth.guard";
 import store from "./lib/redux/store";
+import ToggleTheme from "./components/ToggleTheme";
 
 function App() {
   return (
@@ -17,10 +18,12 @@ function App() {
         <Provider store={store}>
           <BrowserRouter>
             <RoutesWithNotFound>
-              <Route path={`/*`} element={<PublicRoutes />} />
+              <Route element={<ToggleTheme />}>
+                <Route path={`/*`} element={<PublicRoutes />} />
 
-              <Route element={<AuthGuard />}>
-                <Route path={`${PrivatePaths.DASHBOARD}/*`} element={<PrivateRoutes />} />
+                <Route element={<AuthGuard />}>
+                  <Route path={`${PrivatePaths.DASHBOARD}/*`} element={<PrivateRoutes />} />
+                </Route>
               </Route>
             </RoutesWithNotFound>
           </BrowserRouter>

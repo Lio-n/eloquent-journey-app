@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Header from "./header";
+import NavMenu from "./navMenu";
 
 const PublicLayout = () => {
   return (
     <>
-      <Header />
+      <NavMenu />
       <main className="container center_items">
         <Outlet />
       </main>

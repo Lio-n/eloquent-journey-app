@@ -37,7 +37,7 @@ export default Login;
 
 const Login = () => {
   return (
-    <article style={{ maxWidth: "30rem", margin: "0" }}>
+    <article style={{ maxWidth: "30rem" }}>
       <h1 style={{ marginBottom: "1.5rem" }}>Sign in</h1>
 
       <FormLogin />
