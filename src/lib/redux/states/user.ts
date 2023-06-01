@@ -6,7 +6,8 @@ export const EmptyUserState: UserInfo = {
   id: 0,
   fullname: "",
   email: "",
-  articles: [],
+  aboutMe: "",
+  avatar: { url: "", name: "" },
 };
 
 export const UserKey = "user";

@@ -2,7 +2,8 @@ interface UserInfo {
   id: number;
   fullname: string;
   email: string;
-  articles: number[];
+  aboutMe: string;
+  avatar: { url: string; name: string };
 }
 
 export default UserInfo;

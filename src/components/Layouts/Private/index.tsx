@@ -2,22 +2,29 @@ import { Outlet } from "react-router-dom";
 import DashboardMenu from "./dashboardMenu";
 import styled from "styled-components";
 
-const Container = styled.div`
-  margin-top: 2rem;
+const Main = styled.main`
+  #container {
+    margin: 2rem auto 7rem;
+    max-width: 40rem;
 
-  h1 {
-    border-bottom: solid var(--muted-color);
+    h3 {
+      border-bottom: solid var(--muted-color);
+    }
+  }
+
+  @media (min-width: 840px) {
+    margin-left: 5rem;
   }
 `;
 
 const PrivateLayout = () => {
   return (
-    <main>
+    <Main>
       <DashboardMenu />
-      <Container className="container">
+      <article id="container">
         <Outlet />
-      </Container>
-    </main>
+      </article>
+    </Main>
   );
 };
 

@@ -4,6 +4,7 @@ import loginApi from "@/services/public/auth.service";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loadingButton from "./helpers/loadingButton";
+import delay from "@/utilities/delay";
 
 const FormLogin = () => {
   const dispatch = useDispatch();
@@ -14,15 +15,16 @@ const FormLogin = () => {
 
     const { email, password } = e.target;
 
-    email.classList.remove("invalid-border-color");
-    password.classList.remove("invalid-border-color");
+    if (!!email.getAttribute("aria-invalid")) email.removeAttribute("aria-invalid");
+
+    if (!!password.getAttribute("aria-invalid")) password.removeAttribute("aria-invalid");
 
     const formBtnElem = document.getElementById("form_btn") as HTMLButtonElement;
 
     if (formBtnElem) {
       loadingButton({ buttonElem: formBtnElem, isLoading: true });
 
-      setTimeout(async () => {
+      delay(async () => {
         try {
           const result = await loginApi({ email: email.value, password: password.value });
 
@@ -34,13 +36,13 @@ const FormLogin = () => {
             navigate(PrivatePaths.DASHBOARD, { replace: true });
           }
         } catch (err: any) {
-          if (err === "Invalid email") email.classList.add("invalid-border-color");
+          if (err === "Invalid email") email.setAttribute("aria-invalid", "true");
 
-          if (err === "Wrong password") password.classList.add("invalid-border-color");
+          if (err === "Wrong password") password.setAttribute("aria-invalid", "true");
 
           loadingButton({ buttonElem: formBtnElem, isLoading: false });
         }
-      }, 5000);
+      });
     }
   };
 
