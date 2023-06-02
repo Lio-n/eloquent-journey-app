@@ -1,5 +1,4 @@
 import FormProfile from "@/components/Dashboard/Profile/formProfile";
-
 import styled from "styled-components";
 
 const Article = styled.article`

@@ -40,3 +40,11 @@
   color: #888;
 }
  */
+
+.Toastify__close-button {
+  width: fit-content;
+}
+
+.Toastify__toast-body p {
+  margin: 0;
+}

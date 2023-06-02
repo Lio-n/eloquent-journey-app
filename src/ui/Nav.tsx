@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Root = styled.nav`
   position: fixed;
-  z-index: 5;
+  z-index: 1;
   bottom: 0;
 
   width: 100vw;

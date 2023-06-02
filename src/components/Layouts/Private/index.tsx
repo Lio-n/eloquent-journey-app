@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import DashboardMenu from "./dashboardMenu";
 import Main from "../styled";
+import { ContainerAlert } from "@/ui/toastifyAlerts";
 
 const PrivateLayout = () => {
   return (
@@ -9,6 +10,7 @@ const PrivateLayout = () => {
       <div id="container_private">
         <Outlet />
       </div>
+      <ContainerAlert />
     </Main>
   );
 };

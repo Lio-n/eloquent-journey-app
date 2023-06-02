@@ -1,63 +1,17 @@
-import { useDispatch, useSelector } from "react-redux";
-import ArticleInfo from "@/models/article.model";
-import { createArticle } from "@/lib/redux/states/articles";
-import { AppStore } from "@/lib/redux/store";
-import { useEffect } from "react";
-
-const FormCreateArticle = () => {
-  const dispatch = useDispatch();
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-
-    const title = e.target.title.value;
-
-    const MockArticle: ArticleInfo = {
-      id: Math.floor(Math.random() * 100),
-      title,
-      description: "lorem",
-      createdAt: "Today",
-      blocks: [],
-    };
-    dispatch(createArticle(MockArticle));
-  };
-
-  return (
-    <>
-      <form action="submit" onSubmit={handleSubmit} style={{ margin: "0" }}>
-        <label htmlFor="title">
-          Title
-          <input type="text" id="title" name="title" placeholder="Lorem ipsum..." required />
-        </label>
-
-        <button id="form_btn" onSubmit={handleSubmit} style={{ margin: "0" }}>
-          Create Article
-        </button>
-      </form>
-    </>
-  );
-};
+import { useState } from "react";
+import EditorBlock from "@/ui/EditorJs";
+import FormCreateArticle from "@/components/Dashboard/Article/formCreate";
+import type EditorJS from "@editorjs/editorjs";
 
 const ArticleCreate = () => {
-  const articlesState = useSelector((store: AppStore) => store.articles);
-
-  useEffect(() => {
-    console.log("Effect: ", articlesState);
-  }, [articlesState]);
+  const [refEditor, setRef] = useState<EditorJS>();
 
   return (
     <>
-      <h1>Create Article</h1>
+      <h3 style={{ marginTop: "var(--typography-spacing-vertical)" }}>Create Article</h3>
 
-      <FormCreateArticle />
-
-      {articlesState.length > 0 && (
-        <ul>
-          {articlesState.map((article) => (
-            <li key={article.id}>{article.title}</li>
-          ))}
-        </ul>
-      )}
+      {refEditor && <FormCreateArticle editorJsRef={refEditor} />}
+      <EditorBlock holder="editorjs-container" getRef={setRef} />
     </>
   );
 };
