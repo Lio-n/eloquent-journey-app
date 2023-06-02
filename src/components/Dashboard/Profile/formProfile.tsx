@@ -7,6 +7,23 @@ import parseDataForm from "@/utilities/parseDataForm";
 import delay from "@/utilities/delay";
 import Figure from "./figure";
 import { useState } from "react";
+import styled from "styled-components";
+
+const Form = styled.form`
+  margin: 0;
+
+  #aboutMe {
+    resize: none;
+  }
+
+  #form_btn {
+    margin: 0;
+  }
+  @media (min-width: 992px) {
+    display: flex;
+    gap: 2rem;
+  }
+`;
 
 const FormProfile = () => {
   const dispatch = useDispatch();
@@ -36,35 +53,37 @@ const FormProfile = () => {
 
   return (
     <>
-      <form action="submit" onSubmit={handleSubmit} style={{ margin: "0" }}>
+      <Form action="submit" onSubmit={handleSubmit}>
         <Figure avatar={avatar} onChange={setAvatar} />
 
         <div>
-          <label htmlFor="email">
-            Email address
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder={userState.email}
-              aria-label="Input Email"
-              defaultValue={userState.email}
-              required
-            />
-          </label>
+          <div className="grid">
+            <label htmlFor="email">
+              Email address
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder={userState.email}
+                aria-label="Input Email"
+                defaultValue={userState.email}
+                required
+              />
+            </label>
 
-          <label htmlFor="fullname">
-            Fullname
-            <input
-              type="text"
-              id="fullname"
-              name="fullname"
-              placeholder={userState.fullname}
-              aria-label="Input Fullname"
-              defaultValue={userState.fullname}
-              required
-            />
-          </label>
+            <label htmlFor="fullname">
+              Fullname
+              <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder={userState.fullname}
+                aria-label="Input Fullname"
+                defaultValue={userState.fullname}
+                required
+              />
+            </label>
+          </div>
 
           <label htmlFor="aboutMe">
             AboutMe
@@ -73,23 +92,22 @@ const FormProfile = () => {
               name="aboutMe"
               id="aboutMe"
               cols={20}
-              rows={5}
+              rows={3}
               maxLength={300}
               placeholder={userState.aboutMe}
               defaultValue={userState.aboutMe}
               aria-label="Input AboutMe"
-              style={{ resize: "none" }}
               required
             />
             <small style={{ textAlign: "end" }}>
               Characters remaining: <strong id="charCounter">{300 - userState.aboutMe.length}</strong>
             </small>
           </label>
+          <button id="form_btn" onSubmit={handleSubmit}>
+            <strong>Update Profile</strong>
+          </button>
         </div>
-        <button id="form_btn" onSubmit={handleSubmit} style={{ margin: "0" }}>
-          <strong>Update Profile</strong>
-        </button>
-      </form>
+      </Form>
     </>
   );
 };

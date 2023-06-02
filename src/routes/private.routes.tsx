@@ -14,7 +14,6 @@ const PrivateRoutes = () => {
         <Route path={"articles/create"} element={<ArticleCreate />} />
         <Route path="article/:article_id" element={<h1>Editar Articulo</h1>} />
         <Route path="settings" element={<h1>Settings</h1>} />
-        {/* <Route path={"profile"} element={<MyProfile />} /> */}
       </Route>
     </RoutesWithNotFound>
   );

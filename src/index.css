@@ -29,6 +29,7 @@ img {
 .invalid-border-color {
   border-color: var(--form-element-invalid-border-color);
 }
+
 /* 
 a {
   font-weight: 500;

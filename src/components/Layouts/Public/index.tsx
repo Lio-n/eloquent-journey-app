@@ -1,14 +1,15 @@
 import { Outlet } from "react-router-dom";
 import NavMenu from "./navMenu";
+import Main from "../styled";
 
 const PublicLayout = () => {
   return (
-    <>
+    <Main>
       <NavMenu />
-      <main className="container center_items">
+      <div id="container_public">
         <Outlet />
-      </main>
-    </>
+      </div>
+    </Main>
   );
 };
 

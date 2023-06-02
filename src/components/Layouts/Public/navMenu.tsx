@@ -29,7 +29,7 @@ const NavMenu = () => {
             <LoginIcon />
           </Link>
         </li>
-        {userState.id && (
+        {!!userState.id && (
           <>
             <li className="delimiter"></li>
 

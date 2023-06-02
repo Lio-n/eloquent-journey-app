@@ -13,7 +13,7 @@ import ToggleTheme from "./components/ToggleTheme";
 
 function App() {
   return (
-    <div className="App">
+    <div id="app">
       <Suspense fallback={<>Cargando</>}>
         <Provider store={store}>
           <BrowserRouter>
