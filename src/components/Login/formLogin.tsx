@@ -4,7 +4,7 @@ import loginApi from "@/services/public/auth.service";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loadingButton from "./helpers/loadingButton";
-import delay from "@/utilities/delay";
+import delay from "@/utilities/delay.utility";
 
 const FormLogin = () => {
   const dispatch = useDispatch();

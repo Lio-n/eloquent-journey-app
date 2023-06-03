@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import mockUserData from "@/Mock/user.mock.";
 import UserInfo from "@/models/user.model";
 import styled from "styled-components";
-import delay from "@/utilities/delay";
+import delay from "@/utilities/delay.utility";
 
 const Root = styled.article`
   .figure_avatar {

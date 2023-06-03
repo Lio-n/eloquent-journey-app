@@ -1,11 +1,14 @@
 import { useDispatch } from "react-redux";
-import { createArticle } from "@/lib/redux/states/articles";
+import { updateArticle } from "@/lib/redux/states/articles";
 import BroomIcon from "@/ui/icons/broomIcon";
 import { AlertInfo, AlertSuccess } from "@/ui/toastifyAlerts";
-import { createArticleApi } from "@/services/private/article.service";
+import { updateArticleApi } from "@/services/private/article.service";
 import type EditorJS from "@editorjs/editorjs";
 import styled from "styled-components";
 import delay from "@/utilities/delay.utility";
+import ArticleInfo from "@/models/article.model";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import validateBody from "./helper/validateBody";
 
 const Form = styled.form`
@@ -32,8 +35,14 @@ const Form = styled.form`
   }
 `;
 
-const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
+const FormUpdateArticle = ({ editorJsRef, data }: { editorJsRef: EditorJS; data: ArticleInfo }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const inputCheckbox = document.getElementById("makePrivate") as HTMLInputElement;
+    inputCheckbox.checked = data.isPrivate;
+  }, []);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -46,18 +55,19 @@ const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
     const isValid = validateBody(outputData);
     if (!isValid) return;
 
-    AlertInfo("⏳ Creating Article...");
+    AlertInfo("⏳ Updating Article...");
 
     submitBtnElem?.setAttribute("aria-busy", "true");
     submitBtnElem.disabled = true;
 
     delay(async () => {
-      const result = await createArticleApi({ article: outputData, isPrivate });
-      dispatch(createArticle(result));
+      const result = await updateArticleApi({ article: outputData, isPrivate, id: data.id });
 
-      handleCleanArticle();
+      dispatch(updateArticle(result));
 
-      AlertSuccess("Article Created!");
+      AlertSuccess("Article Updated!");
+
+      navigate("/dashboard/articles/list", { replace: true });
 
       submitBtnElem?.setAttribute("aria-busy", "false");
       submitBtnElem.disabled = false;
@@ -75,7 +85,7 @@ const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
         </label>
       </fieldset>
       <button id="submit_btn" onSubmit={handleSubmit}>
-        Create
+        Update
       </button>
       <button type="button" onClick={handleCleanArticle}>
         <BroomIcon />
@@ -85,4 +95,4 @@ const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
   );
 };
 
-export default FormCreateArticle;
+export default FormUpdateArticle;

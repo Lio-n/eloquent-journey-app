@@ -11,4 +11,12 @@ interface ArticleInfo {
   blocks: OutputBlockData[];
 }
 
+type ArticleListInfo = {
+  id: number;
+  title: string;
+  isPrivate: boolean;
+  createdAt: string;
+};
+
+export type { ArticleListInfo };
 export default ArticleInfo;

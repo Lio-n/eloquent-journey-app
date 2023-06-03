@@ -22,7 +22,7 @@ const DashboardMenu = () => {
           </Link>
         </li>
         <li>
-          <Link to={`/dashboard/articles`} data-tooltip="My Articles">
+          <Link to={`/dashboard/articles/list`} data-tooltip="My Articles">
             <ArticleIcon />
           </Link>
         </li>

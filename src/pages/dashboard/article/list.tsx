@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import ListOfArticles from "@/components/Dashboard/Article/listOfArticles";
 
 const ArticleList = () => {
   return (
     <>
-      <h1>List of Articles</h1>
-      <Link to="/dashboard/articles/create">Create Article</Link>
+      <h3>List of Articles</h3>
+
+      <ListOfArticles />
     </>
   );
 };
