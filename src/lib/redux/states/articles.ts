@@ -16,7 +16,7 @@ export const articlesSlice = createSlice({
 
       persistLocalStorage<ArticleInfo[]>(ArticlesKey, state);
     },
-    updateArticle: (state, action) => {
+    updateArticleById: (state, action: PayloadAction<ArticleInfo>) => {
       const newState = current(state).map((item: ArticleInfo) => {
         if (item.id === action.payload.id) {
           item = action.payload;
@@ -29,14 +29,16 @@ export const articlesSlice = createSlice({
 
       return newState;
     },
-    /* ,
-    resetUser: () => {
-      // clearLocalStorage(UserKey);
-      return EmptyArticlesState;
-    }, */
+    deleteArticleById: (state, action: PayloadAction<{ id: number }>) => {
+      const newState = current(state).filter((item: ArticleInfo) => item.id !== action.payload.id);
+
+      persistLocalStorage<ArticleInfo[]>(ArticlesKey, newState);
+
+      return newState;
+    },
   },
 });
 
-export const { createArticle, updateArticle } = articlesSlice.actions;
+export const { createArticle, updateArticleById, deleteArticleById } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

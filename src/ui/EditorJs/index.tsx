@@ -8,7 +8,16 @@ const EditorRoot = styled.div`
   border-radius: 10px;
   overflow: auto;
   width: 100%;
-  height: 17rem;
+  height: calc(-25rem + 100vh);
+  padding: 0 1rem;
+
+  @media (min-width: 550px) {
+    height: calc(-18rem + 100vh);
+  }
+
+  @media (min-width: 840px) {
+    height: initial;
+  }
 
   .ce-toolbar__actions {
     background-color: var(--accordion-border-color) !important;

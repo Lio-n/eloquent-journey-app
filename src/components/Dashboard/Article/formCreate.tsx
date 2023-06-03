@@ -32,13 +32,21 @@ const Form = styled.form`
   }
 `;
 
+const disableElements = (isDisable: boolean): void => {
+  const submitBtnElem = document.getElementById("submit_btn") as HTMLButtonElement;
+  const cleanBtnElem = document.getElementById("clean_btn") as HTMLButtonElement;
+  const makePrivateElem = document.getElementById("makePrivate") as HTMLInputElement;
+
+  submitBtnElem.disabled = isDisable;
+  cleanBtnElem.disabled = isDisable;
+  makePrivateElem.disabled = isDisable;
+};
+
 const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
-    const submitBtnElem = document.getElementById("submit_btn") as HTMLButtonElement;
 
     const isPrivate = e.target.makePrivate.checked;
     const outputData = await editorJsRef?.save();
@@ -48,8 +56,9 @@ const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
 
     AlertInfo("⏳ Creating Article...");
 
+    const submitBtnElem = document.getElementById("submit_btn") as HTMLButtonElement;
     submitBtnElem?.setAttribute("aria-busy", "true");
-    submitBtnElem.disabled = true;
+    disableElements(true);
 
     delay(async () => {
       const result = await createArticleApi({ article: outputData, isPrivate });
@@ -60,7 +69,7 @@ const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
       AlertSuccess("Article Created!");
 
       submitBtnElem?.setAttribute("aria-busy", "false");
-      submitBtnElem.disabled = false;
+      disableElements(false);
     });
   };
 
@@ -77,7 +86,7 @@ const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
       <button id="submit_btn" onSubmit={handleSubmit}>
         Create
       </button>
-      <button type="button" onClick={handleCleanArticle}>
+      <button id="clean_btn" type="button" onClick={handleCleanArticle}>
         <BroomIcon />
         Clean
       </button>

@@ -1,8 +1,8 @@
 import { CSSProperties } from "react";
 
-const MoonIcon = ({ styles, className }: { styles?: CSSProperties; className?: string }) => (
+const MoonIcon = ({ style, className }: { style?: CSSProperties; className?: string }) => (
   <svg
-    style={{ ...styles, width: "1.5rem" }}
+    style={{ ...style, width: "1.5rem" }}
     className={className}
     id="moonIcon"
     data-icon="moon-stars"

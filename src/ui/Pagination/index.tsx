@@ -8,8 +8,8 @@ const PaginationControll = ({ pagination, handleNextResults, handlePrevResults }
 
   return (
     <div style={{ margin: "1rem 0", display: "flex", gap: "1rem", justifyContent: "center" }}>
-      {offset > 0 && <ArrowLeftIcon onClick={handlePrevResults} styles={{ cursor: "pointer" }} />}
-      {total > limit + offset && <ArrowRightIcon onClick={handleNextResults} styles={{ cursor: "pointer" }} />}
+      {offset > 0 && <ArrowLeftIcon onClick={handlePrevResults} style={{ cursor: "pointer" }} />}
+      {total > limit + offset && <ArrowRightIcon onClick={handleNextResults} style={{ cursor: "pointer" }} />}
     </div>
   );
 };
