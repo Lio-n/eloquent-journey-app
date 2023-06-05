@@ -49,7 +49,7 @@ const FormPersonalization = () => {
     disableElements(e, true);
 
     delay(() => {
-      dispatch(updateUser({ settings: { primaryColor } }));
+      dispatch(updateUser({ settings: { ...userState.settings, primaryColor } }));
 
       disableElements(e, false);
 

@@ -37,21 +37,21 @@ const Toggle = styled.div`
 
 const ToggleTheme = () => {
   const userState = useSelector((store: AppStore) => store.user);
-  const [theme, setTheme] = useState(userState.settings.theme || "dark");
+  const [theme, setTheme] = useState(userState.id === 1 ? userState.settings.theme : "dark");
   const dispatch = useDispatch();
 
-  const changeTheme = () => dispatch(updateUser({ settings: { theme } }));
+  const changeTheme = () => dispatch(updateUser({ settings: { ...userState.settings, theme } }));
 
   useEffect(() => {
     if (theme) {
-      changeTheme();
+      userState.id === 1 && changeTheme();
       switchTheme(theme);
     }
   }, [theme]);
 
   useEffect(() => {
-    setTheme(userState.settings.theme);
-  }, [userState.settings.theme]);
+    if (userState.id === 1) setTheme(userState.settings.theme);
+  }, [userState.settings.theme, userState.id]);
 
   return (
     <>

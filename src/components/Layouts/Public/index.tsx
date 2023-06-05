@@ -12,7 +12,7 @@ const PublicLayout = () => {
   useEffect(() => {
     const root = document.documentElement;
 
-    if (userState.settings.primaryColor) {
+    if (userState.id === 1 && userState.settings.primaryColor) {
       // @ts-ignore
       root.style.setProperty("--primary", ThemesConfig[`${userState.settings.primaryColor}`]["--primary"]);
       // @ts-ignore

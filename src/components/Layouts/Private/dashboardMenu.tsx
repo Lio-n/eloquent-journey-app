@@ -1,12 +1,18 @@
+import { updateUser } from "@/lib/redux/states/user";
 import Nav from "@/ui/Nav";
 import ArticleIcon from "@/ui/icons/articleIcon";
 import HomeIcon from "@/ui/icons/homeIcon";
 import LogoutIcon from "@/ui/icons/logoutIcon";
 import UserIcon from "@/ui/icons/userIcon";
 import WrenchIcon from "@/ui/icons/wrenchIcon";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const DashboardMenu = () => {
+  const dispatch = useDispatch();
+
+  const cleanUserFromLocalStorage = () => dispatch(updateUser({ id: 2 }));
+
   return (
     <>
       <Nav>
@@ -32,7 +38,7 @@ const DashboardMenu = () => {
           </Link>
         </li>
         <li>
-          <Link to={`/`} data-tooltip="Logout">
+          <Link to={`/`} data-tooltip="Logout" onClick={cleanUserFromLocalStorage}>
             <LogoutIcon />
           </Link>
         </li>

@@ -1,4 +1,4 @@
-import { avatarAssets } from "@/Mock/user.mock.";
+import { MockAvatarAssets } from "@/Mock/user.mock.";
 import PenIcon from "@/ui/icons/penIcon";
 import styled from "styled-components";
 
@@ -63,10 +63,10 @@ const Figure = ({ avatar, onChange }: { avatar: { url: string; name: string }; o
         <img src={avatar.url} alt={avatar.name} />
       </div>
       <div className="card_avatars">
-        <img src={avatarAssets.avatar_1} alt={"avatar"} onClick={() => onChange({ url: avatarAssets.avatar_1, name: "avatar" })} />
-        <img src={avatarAssets.avatar_2} alt={"avatar"} onClick={() => onChange({ url: avatarAssets.avatar_2, name: "avatar" })} />
-        <img src={avatarAssets.avatar_3} alt={"avatar"} onClick={() => onChange({ url: avatarAssets.avatar_3, name: "avatar" })} />
-        <img src={avatarAssets.avatar_4} alt={"avatar"} onClick={() => onChange({ url: avatarAssets.avatar_4, name: "avatar" })} />
+        <img src={MockAvatarAssets.avatar_1} alt={"avatar"} onClick={() => onChange({ url: MockAvatarAssets.avatar_1, name: "avatar" })} />
+        <img src={MockAvatarAssets.avatar_2} alt={"avatar"} onClick={() => onChange({ url: MockAvatarAssets.avatar_2, name: "avatar" })} />
+        <img src={MockAvatarAssets.avatar_3} alt={"avatar"} onClick={() => onChange({ url: MockAvatarAssets.avatar_3, name: "avatar" })} />
+        <img src={MockAvatarAssets.avatar_4} alt={"avatar"} onClick={() => onChange({ url: MockAvatarAssets.avatar_4, name: "avatar" })} />
       </div>
     </Root>
   );

@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 const NavMenu = () => {
   const userState = useSelector((store: AppStore) => store.user);
 
+  const showDashboard = userState.id !== 0 && userState.id !== 2;
+
   return (
     <>
       <Nav>
@@ -29,7 +31,7 @@ const NavMenu = () => {
             <LoginIcon />
           </Link>
         </li>
-        {!!userState.id && (
+        {showDashboard && (
           <>
             <li className="delimiter"></li>
 
