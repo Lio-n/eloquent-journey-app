@@ -1,4 +1,4 @@
-import { removeArticles } from "@/lib/redux/states/articles";
+import { resetArticles } from "@/lib/redux/states/articles";
 import { resetUser } from "@/lib/redux/states/user";
 import { AlertInfo } from "@/ui/toastifyAlerts";
 import delay from "@/utilities/delay.utility";
@@ -41,7 +41,7 @@ const FormLocalStorage = () => {
     delay(async () => {
       if (resetUserCheckbox) dispatch(resetUser());
 
-      if (resetArticlesCheckbox) dispatch(removeArticles());
+      if (resetArticlesCheckbox) dispatch(resetArticles());
 
       disableElements(e, false);
 
@@ -66,7 +66,7 @@ const FormLocalStorage = () => {
 
             <label htmlFor="resetArticles">
               <input type="checkbox" id="resetArticles" name="resetArticles" role="switch" />
-              Delete All Articles
+              Reset Articles
             </label>
           </fieldset>
           <div className="container_submit_btn">

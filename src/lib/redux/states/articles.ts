@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
 import { clearLocalStorage, getLocalStorage, persistLocalStorage } from "@/utilities/localStorage.utility";
 import ArticleInfo from "@/models/article.model";
-
-export const EmptyArticlesState: ArticleInfo[] = [];
+import MockArticlesHits, { MockEmptyArticlesState } from "@/Mock/articles.mock";
 
 export const ArticlesKey = "articles";
-const initialState = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : EmptyArticlesState;
+
+const initialState = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : MockEmptyArticlesState;
 
 export const articlesSlice = createSlice({
   name: "articles",
@@ -36,14 +36,14 @@ export const articlesSlice = createSlice({
 
       return newState;
     },
-    removeArticles: () => {
-      clearLocalStorage(ArticlesKey);
+    resetArticles: () => {
+      persistLocalStorage<ArticleInfo[]>(ArticlesKey, MockArticlesHits);
 
-      return [];
+      return MockArticlesHits;
     },
   },
 });
 
-export const { createArticle, updateArticleById, deleteArticleById, removeArticles } = articlesSlice.actions;
+export const { createArticle, updateArticleById, deleteArticleById, resetArticles } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

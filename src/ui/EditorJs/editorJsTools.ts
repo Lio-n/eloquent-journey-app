@@ -8,11 +8,13 @@ import List from "@editorjs/list";
 import Paragraph from "@editorjs/paragraph";
 // @ts-ignore
 import Marker from "@editorjs/marker";
+// @ts-ignore
+import Code from "@editorjs/code";
 
 /* 
     I set @ts-ignore, because the types of those libraries are not included in yarn.
     If you use npm, then can install the types with:
-        - npm i --save-dev @types/editorjs__image @types/editorjs__list @types/editorjs__paragraph @types/editorjs__marker
+        - npm i --save-dev @types/editorjs__image @types/editorjs__list @types/editorjs__paragraph @types/editorjs__marker @types/editorjs__code 
 */
 
 const compressImage = async (file: any): Promise<any> => {
@@ -48,6 +50,7 @@ const compressImage = async (file: any): Promise<any> => {
 
 const EDITOR_JS_TOOLS = {
   marker: Marker,
+  code: Code,
   list: List,
   header: Header,
   paragraph: {
