@@ -40,11 +40,11 @@ const Root = styled.nav`
 const Nav = ({ children }: { children: any }) => {
   const mediaQuery = window.matchMedia("(min-width: 840px)");
 
-  const handleMediaQueryChange = (mediaQuery: any) => {
+  const handleMediaQueryChange = (query: any) => {
     const menuList = document.getElementById("menu_list");
     const links = menuList?.querySelectorAll("[data-tooltip]");
 
-    if (mediaQuery.matches) {
+    if (query?.matches) {
       links?.forEach((link) => link.setAttribute("data-placement", "right"));
     } else {
       links?.forEach((link) => link.setAttribute("data-placement", "top"));

@@ -36,9 +36,14 @@ export const articlesSlice = createSlice({
 
       return newState;
     },
+    removeArticles: () => {
+      clearLocalStorage(ArticlesKey);
+
+      return [];
+    },
   },
 });
 
-export const { createArticle, updateArticleById, deleteArticleById } = articlesSlice.actions;
+export const { createArticle, updateArticleById, deleteArticleById, removeArticles } = articlesSlice.actions;
 
 export default articlesSlice.reducer;

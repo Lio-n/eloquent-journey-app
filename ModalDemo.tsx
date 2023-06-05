@@ -9,7 +9,7 @@ const Modal = () => {
   // Toggle modal
   const toggleModal = (event: any) => {
     event.preventDefault();
-    const modal = document.getElementById(event.currentTarget.getAttribute("data-target"));
+    const modal = document.getElementById(event.target.getAttribute("data-target"));
     typeof modal != "undefined" && modal != null && isModalOpen(modal) ? closeModal(modal) : openModal(modal);
   };
 

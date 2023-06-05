@@ -5,13 +5,11 @@ import { Link } from "react-router-dom";
 const ArticleList = () => {
   return (
     <>
-      <div style={{ width: "100%", margin: "var(--typography-spacing-vertical) 0" }}>
-        <Link to="/dashboard/articles/create">
-          <button style={{ margin: "0", padding: ".5rem", width: "fit-content", borderRadius: "50%" }}>
-            <PlusIcon />
-          </button>
-        </Link>
-      </div>
+      <Link to="/dashboard/articles/create" style={{ margin: "var(--typography-spacing-vertical) 0", justifySelf: "baseline" }}>
+        <button style={{ padding: ".5rem", width: "fit-content", borderRadius: "50%", margin: "0" }}>
+          <PlusIcon />
+        </button>
+      </Link>
 
       <ListOfArticles />
     </>

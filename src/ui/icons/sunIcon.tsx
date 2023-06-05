@@ -1,7 +1,8 @@
 import { CSSProperties } from "react";
 
-const SunIcon = ({ style, className }: { style?: CSSProperties; className?: string }) => (
+const SunIcon = ({ style, className, onClick }: { style?: CSSProperties; className?: string; onClick?: () => any }) => (
   <svg
+    onClick={onClick}
     style={{ ...style, width: "1.5rem" }}
     className={className}
     id="sunIcon"

@@ -9,7 +9,7 @@ const EditorRoot = styled.div`
   overflow: auto;
   width: 100%;
   height: calc(-25rem + 100vh);
-  padding: 0 1rem;
+  padding: 0 4rem;
 
   @media (min-width: 550px) {
     height: calc(-18rem + 100vh);

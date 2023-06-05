@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import UserInfo from "@/models/user.model";
-import { clearLocalStorage, persistLocalStorage } from "@/utilities/localStorage.utility";
+import { persistLocalStorage } from "@/utilities/localStorage.utility";
+import MockUserData from "@/Mock/user.mock.";
 
 export const EmptyUserState: UserInfo = {
   id: 0,
@@ -8,6 +9,10 @@ export const EmptyUserState: UserInfo = {
   email: "",
   aboutMe: "",
   avatar: { url: "", name: "" },
+  settings: {
+    primaryColor: "",
+    theme: "dark",
+  },
 };
 
 export const UserKey = "user";
@@ -26,8 +31,9 @@ export const userSlice = createSlice({
       return result;
     },
     resetUser: () => {
-      clearLocalStorage(UserKey);
-      return EmptyUserState;
+      persistLocalStorage<UserInfo>(UserKey, MockUserData);
+
+      return MockUserData;
     },
   },
 });

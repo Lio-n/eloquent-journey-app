@@ -4,6 +4,10 @@ interface UserInfo {
   email: string;
   aboutMe: string;
   avatar: { url: string; name: string };
+  settings: {
+    primaryColor: string;
+    theme: "light" | "dark";
+  };
 }
 
 export default UserInfo;

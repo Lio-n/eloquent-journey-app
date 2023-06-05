@@ -5,6 +5,7 @@ import ArticleCreate from "@/pages/dashboard/article/create";
 import MyProfile from "@/pages/dashboard/profile";
 import ArticleList from "@/pages/dashboard/article/list";
 import EditArticleById from "@/pages/dashboard/article/[article_id]/edit";
+import MySetting from "@/pages/dashboard/setting";
 
 const PrivateRoutes = () => {
   return (
@@ -14,8 +15,7 @@ const PrivateRoutes = () => {
         <Route path={"articles/list"} element={<ArticleList />} />
         <Route path={"articles/create"} element={<ArticleCreate />} />
         <Route path="articles/:article_id/edit" element={<EditArticleById />} />
-
-        <Route path="settings" element={<h1>Settings</h1>} />
+        <Route path="settings" element={<MySetting />} />
       </Route>
     </RoutesWithNotFound>
   );

@@ -8,6 +8,8 @@ import delay from "@/utilities/delay.utility";
 import Figure from "./figure";
 import { useState } from "react";
 import styled from "styled-components";
+import disableElements from "@/utilities/disableSubmitBtn.utility";
+import { AlertInfo } from "@/ui/toastifyAlerts";
 
 const Form = styled.form`
   margin: 0;
@@ -32,12 +34,10 @@ const FormProfile = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const buttonElem = document.getElementById("form_btn") as HTMLButtonElement;
+
+    disableElements(e, true);
 
     const { email, fullname, aboutMe } = parseDataForm(e);
-
-    buttonElem?.setAttribute("aria-busy", "true");
-    buttonElem.disabled = true;
 
     delay(async () => {
       const result = await updateUserApi({ email, fullname, aboutMe, avatar });
@@ -45,8 +45,9 @@ const FormProfile = () => {
       if (result) {
         dispatch(updateUser(result));
 
-        buttonElem?.setAttribute("aria-busy", "false");
-        buttonElem.disabled = false;
+        AlertInfo("changes made!");
+
+        disableElements(e, false);
       }
     });
   };
@@ -103,7 +104,7 @@ const FormProfile = () => {
               Characters remaining: <strong id="charCounter">{300 - userState.aboutMe.length}</strong>
             </small>
           </label>
-          <button id="form_btn" onSubmit={handleSubmit}>
+          <button id="submit_btn" onSubmit={handleSubmit}>
             <strong>Update Profile</strong>
           </button>
         </div>

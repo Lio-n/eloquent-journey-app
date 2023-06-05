@@ -32,9 +32,9 @@ const DashboardMenu = () => {
           </Link>
         </li>
         <li>
-          <div role="link" style={{ cursor: "pointer", border: "none" }} data-tooltip="Logout">
+          <Link to={`/`} data-tooltip="Logout">
             <LogoutIcon />
-          </div>
+          </Link>
         </li>
       </Nav>
     </>

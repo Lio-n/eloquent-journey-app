@@ -1,5 +1,10 @@
+import { updateUser } from "@/lib/redux/states/user";
+import { AppStore } from "@/lib/redux/store";
 import MoonIcon from "@/ui/icons/moonIcon";
 import SunIcon from "@/ui/icons/sunIcon";
+import switchTheme from "@/utilities/switchTheme.utility";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
@@ -31,34 +36,28 @@ const Toggle = styled.div`
 `;
 
 const ToggleTheme = () => {
-  const switchTheme = () => {
-    const htmlElem = document?.querySelector("html");
-    const sunIconElem = document?.getElementById("sunIcon");
-    const moonIconElem = document?.getElementById("moonIcon");
+  const userState = useSelector((store: AppStore) => store.user);
+  const [theme, setTheme] = useState(userState.settings.theme || "dark");
+  const dispatch = useDispatch();
 
-    const dataTheme = htmlElem?.getAttribute("data-theme");
+  const changeTheme = () => dispatch(updateUser({ settings: { theme } }));
 
-    if (dataTheme === "dark") {
-      htmlElem?.setAttribute("data-theme", "light");
-
-      moonIconElem?.classList.remove("display_none");
-      sunIconElem?.classList.add("display_none");
-
-      return;
+  useEffect(() => {
+    if (theme) {
+      changeTheme();
+      switchTheme(theme);
     }
+  }, [theme]);
 
-    moonIconElem?.classList.add("display_none");
-    sunIconElem?.classList.remove("display_none");
-
-    htmlElem?.setAttribute("data-theme", "dark");
-    return;
-  };
+  useEffect(() => {
+    setTheme(userState.settings.theme);
+  }, [userState.settings.theme]);
 
   return (
     <>
-      <Toggle onClick={switchTheme}>
-        <MoonIcon className="display_none" />
-        <SunIcon />
+      <Toggle>
+        <MoonIcon className="display_none" onClick={() => setTheme("dark")} />
+        <SunIcon onClick={() => setTheme("light")} />
       </Toggle>
 
       <Outlet />

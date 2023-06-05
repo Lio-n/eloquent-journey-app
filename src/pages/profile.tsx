@@ -15,7 +15,7 @@ const Root = styled.article`
       width: 8rem;
       height: 8rem;
       padding: 0.3rem;
-      border: solid 0.1rem;
+      border: 0.1rem solid var(--primary);
     }
   }
 
