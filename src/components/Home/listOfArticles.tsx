@@ -1,4 +1,5 @@
-import ArticleInfo from "@/models/article.model";
+import ArticleInfo, { ArticleThumbnailInfo } from "@/models/article.model";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Ul = styled.ul`
@@ -11,6 +12,10 @@ const Ul = styled.ul`
 
   li {
     list-style-type: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 
@@ -46,6 +51,10 @@ const Card = styled.article`
   .article_title,
   .article_description {
     width: fit-content;
+
+    a {
+      text-decoration: underline;
+    }
   }
 
   .article_date {
@@ -55,17 +64,19 @@ const Card = styled.article`
   }
 `;
 
-const ListOfArticles = ({ articles }: { articles: ArticleInfo[] }) => {
+const ListOfArticles = ({ articles }: { articles: ArticleThumbnailInfo[] }) => {
   return (
     <Ul>
       {articles.map((article) => (
         <li key={article.id}>
-          <Card>
-            <img className="article_thumbnail" src={article.thumbnail.url} alt={article.thumbnail.name} />
-            <h4 className="article_title" dangerouslySetInnerHTML={{ __html: article.title }} />
-            <p className="article_description" dangerouslySetInnerHTML={{ __html: article.description }} />
-            <small className="article_date">{article.createdAt}</small>
-          </Card>
+          <Link to={`article/${article.id}`}>
+            <Card>
+              <img className="article_thumbnail" src={article.thumbnail.url} alt={article.thumbnail.name} />
+              <h4 className="article_title" dangerouslySetInnerHTML={{ __html: article.title }} />
+              <p className="article_description" dangerouslySetInnerHTML={{ __html: article.description }} />
+              <small className="article_date">{article.createdAt}</small>
+            </Card>
+          </Link>
         </li>
       ))}
     </Ul>

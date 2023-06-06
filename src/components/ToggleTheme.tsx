@@ -12,6 +12,7 @@ const Toggle = styled.div`
   position: fixed;
   top: 1rem;
   right: 1rem;
+  z-index: 10;
 
   border-radius: 50%;
   padding: 0.5rem;

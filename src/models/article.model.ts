@@ -18,5 +18,13 @@ type ArticleListInfo = {
   createdAt: string;
 };
 
-export type { ArticleListInfo };
+type ArticleThumbnailInfo = {
+  id: number;
+  title: string;
+  description: string;
+  thumbnail: { url: string; name: string };
+  createdAt: string;
+};
+
+export type { ArticleListInfo, ArticleThumbnailInfo };
 export default ArticleInfo;

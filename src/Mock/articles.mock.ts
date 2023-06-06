@@ -452,14 +452,6 @@ const MockArticleFour: ArticleInfo = {
         text: "To use a Client Component in Next.js, create a file inside <i>/app</i> and add the ‘<i>use client</i>’ directive at the top of the file, before any imports.",
       },
     },
-    { id: "EPVUeh7AXQ", type: "paragraph", data: { text: "Here is an example of a Client Component<i> /app/Counter.js</i>." } },
-    {
-      id: "jNPbRxCpe5",
-      type: "code",
-      data: {
-        code: "'use client';\n\nimport { useState } from 'react';\n \nexport default function Counter() {\n  const [count, setCount] = useState(0);\n  return (\n    <div>\n      <p>You clicked {count} times</p>\n      <button onClick={() => setCount(count + 1)}>Click me</button>\n    </div>\n  );\n}",
-      },
-    },
     {
       id: "UNHoW3wbbF",
       type: "paragraph",

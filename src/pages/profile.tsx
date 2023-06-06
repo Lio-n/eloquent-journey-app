@@ -6,7 +6,7 @@ import UserInfo from "@/models/user.model";
 import styled from "styled-components";
 import delay from "@/utilities/delay.utility";
 
-const Root = styled.article`
+const Article = styled.article`
   max-width: 40rem;
 
   .figure_avatar {
@@ -67,26 +67,28 @@ const Profile = () => {
   };
 
   return (
-    <Root>
-      <h3 style={{ marginBottom: "1.5rem" }}>Profile</h3>
-      <div className="user_content">
-        <figure className="figure_avatar">
-          <img className="avatar" src={user?.avatar.url} alt={user?.avatar.name} />
-        </figure>
-        <div className="user_info">
-          <p>
-            <strong className="fullname">{user?.fullname}</strong>
-          </p>
-          <p>{user?.aboutMe}</p>
-
-          <u style={{ justifySelf: "end" }}>
-            <p onClick={handleCopyText} data-tooltip="Copy email!" className="email">
-              {user?.email}
+    <div className="center_items" style={{ height: "100%" }}>
+      <Article>
+        <h3 style={{ marginBottom: "1.5rem" }}>Profile</h3>
+        <div className="user_content">
+          <figure className="figure_avatar">
+            <img className="avatar" src={user?.avatar.url} alt={user?.avatar.name} />
+          </figure>
+          <div className="user_info">
+            <p>
+              <strong className="fullname">{user?.fullname}</strong>
             </p>
-          </u>
+            <p>{user?.aboutMe}</p>
+
+            <u style={{ justifySelf: "end" }}>
+              <p onClick={handleCopyText} data-tooltip="Copy email!" className="email">
+                {user?.email}
+              </p>
+            </u>
+          </div>
         </div>
-      </div>
-    </Root>
+      </Article>
+    </div>
   );
 };
 
