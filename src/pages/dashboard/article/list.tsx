@@ -1,6 +1,8 @@
-import ListOfArticles from "@/components/Dashboard/Article/listOfArticles";
 import PlusIcon from "@/ui/icons/plusIcon";
+import { lazy } from "react";
 import { Link } from "react-router-dom";
+
+const LazyListOfArticles = lazy(() => import("@/components/Dashboard/Article/listOfArticles"));
 
 const ArticleList = () => {
   return (
@@ -11,7 +13,7 @@ const ArticleList = () => {
         </button>
       </Link>
 
-      <ListOfArticles />
+      <LazyListOfArticles />
     </>
   );
 };

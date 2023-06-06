@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import DashboardMenu from "./dashboardMenu";
 import Main from "../styled";
-import { ContainerAlert } from "@/ui/toastifyAlerts";
 import { useSelector } from "react-redux";
 import { AppStore } from "@/lib/redux/store";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import ThemesConfig from "@/config/themes.config";
+
+const LazyContainerAlert = lazy(() => import("@/ui/toastifyAlerts"));
 
 const PrivateLayout = () => {
   const userState = useSelector((store: AppStore) => store.user);
@@ -31,7 +32,7 @@ const PrivateLayout = () => {
       <div id="container_private">
         <Outlet />
       </div>
-      <ContainerAlert />
+      <LazyContainerAlert />
     </Main>
   );
 };

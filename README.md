@@ -1,29 +1,34 @@
 # Idea App:
 
-- Un SPA donde se implementar un Dashboard, habran dos usuarios(ó autores) y un admin.
-  - Cada usuario podra crear un articulo, este solo podra editar y eliminar su propio articulo.
-  - El admin podra editar y eliminar todos los articulos disponibles.
+- Un SPA donde se implementar un Dashboard, habran un admin.
+  - El admin podra:
+    - Crear, editar y eliminar articulos.
+    - Resetear los datos almacenados en el LocalStorage, info Mock tales como User y Articles.
+    - Cambiar el color principal de la page en base a los disponibles, en la page /dashboard/settings.
 
 # Paginas:
 
 ## Publicas
 
 - /
-  - En la página principal se veran todos los que sean publicos disponibles.
-  - Se vera info extra, tal como, Author, fecha de publicacion, cantidad de palabras, etc.
+  - En la página principal se veran todos los articulos publicos.
 - /[article_id]
   - El cuerpo de la noticia, ademas de info extra.
 - /profile/[user_id]
   - Perfil publico del autor.
     - Este debera incluir todo los articulos(publicos) publicados por el autor, ademas de info extra.
 - /login
-  - Para que los autores y el admin, inicien sesion.
+  - Para que el admin, inicien sesion.
 
 ## Privadas
 
-- /private/dashboard/[user_id]
-  - Cada autor podra ver info relacionada a su trabajo. - Tales como cantidad de publicaciones. - Publicaciones privadas y publicas. - Etc.
-  <!-- - /private/dashboard/[user_id]/ -->
+- /dashboard/profile
+  - Cada autor podra ver info relacionada a su trabajo, Tales como:
+    - Cantidad de publicaciones.
+    - Cantidad Publicaciones privadas y publicas.
+    - Etc.
+
+# En progreso...
 
 # Useful stuff
 

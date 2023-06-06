@@ -1,19 +1,21 @@
 import RoutesWithNotFound from "@/utilities/RoutesWithNotFound.utility";
 import { Route } from "react-router-dom";
-import Login from "@/pages/login";
-import PublicLayout from "@/components/Layouts/Public";
-import Profile from "@/pages/profile";
-import Home from "@/pages";
-import ArticleById from "@/pages/article/[article_id]";
+import { lazy } from "react";
+
+const LazyPublicLayout = lazy(() => import("@/components/Layouts/Public"));
+const LazyHome = lazy(() => import("@/pages"));
+const LazyArticleById = lazy(() => import("@/pages/article/[article_id]"));
+const LazyLogin = lazy(() => import("@/pages/login"));
+const LazyProfile = lazy(() => import("@/pages/profile"));
 
 function PublicRoutes() {
   return (
     <RoutesWithNotFound>
-      <Route element={<PublicLayout />}>
-        <Route path={"/"} element={<Home />} />
-        <Route path="/article/:article_id" element={<ArticleById />} />
-        <Route path={"/login"} element={<Login />} />
-        <Route path={"/profile"} element={<Profile />} />
+      <Route element={<LazyPublicLayout />}>
+        <Route path={"/"} element={<LazyHome />} />
+        <Route path="/article/:article_id" element={<LazyArticleById />} />
+        <Route path={"/login"} element={<LazyLogin />} />
+        <Route path={"/profile"} element={<LazyProfile />} />
       </Route>
     </RoutesWithNotFound>
   );

@@ -1,21 +1,23 @@
 import RoutesWithNotFound from "@/utilities/RoutesWithNotFound.utility";
 import { Route } from "react-router-dom";
-import PrivateLayout from "@/components/Layouts/Private";
-import ArticleCreate from "@/pages/dashboard/article/create";
-import MyProfile from "@/pages/dashboard/profile";
-import ArticleList from "@/pages/dashboard/article/list";
-import EditArticleById from "@/pages/dashboard/article/[article_id]/edit";
-import MySetting from "@/pages/dashboard/setting";
+import { lazy } from "react";
+
+const LazyPrivateLayout = lazy(() => import("@/components/Layouts/Private"));
+const LazyMyProfile = lazy(() => import("@/pages/dashboard/profile"));
+const LazyArticleList = lazy(() => import("@/pages/dashboard/article/list"));
+const LazyArticleCreate = lazy(() => import("@/pages/dashboard/article/create"));
+const LazyEditArticleById = lazy(() => import("@/pages/dashboard/article/[article_id]/edit"));
+const LazyMySetting = lazy(() => import("@/pages/dashboard/setting"));
 
 const PrivateRoutes = () => {
   return (
     <RoutesWithNotFound>
-      <Route element={<PrivateLayout />}>
-        <Route path="/" element={<MyProfile />} />
-        <Route path={"articles/list"} element={<ArticleList />} />
-        <Route path={"articles/create"} element={<ArticleCreate />} />
-        <Route path="articles/:article_id/edit" element={<EditArticleById />} />
-        <Route path="settings" element={<MySetting />} />
+      <Route element={<LazyPrivateLayout />}>
+        <Route path="/" element={<LazyMyProfile />} />
+        <Route path={"articles/list"} element={<LazyArticleList />} />
+        <Route path={"articles/create"} element={<LazyArticleCreate />} />
+        <Route path="articles/:article_id/edit" element={<LazyEditArticleById />} />
+        <Route path="settings" element={<LazyMySetting />} />
       </Route>
     </RoutesWithNotFound>
   );

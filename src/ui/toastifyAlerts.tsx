@@ -35,3 +35,4 @@ const AlertWarn = (message: string | any = "🦄 Wow so easy!") => toast.warn(me
 const AlertInfo = (message: string | any = "🦄 Wow so easy!") => toast.info(message, defaultOptions);
 
 export { ContainerAlert, AlertSuccess, AlertError, AlertWarn, AlertInfo };
+export default ContainerAlert;

@@ -1,5 +1,7 @@
-import FormProfile from "@/components/Dashboard/Profile/formProfile";
+import { lazy } from "react";
 import styled from "styled-components";
+
+const LazyFormProfile = lazy(() => import("@/components/Dashboard/Profile/formProfile"));
 
 const Article = styled.article`
   @media (max-width: 992px) {
@@ -12,7 +14,7 @@ const MyProfile = () => {
     <Article>
       <h3>My profile</h3>
 
-      <FormProfile />
+      <LazyFormProfile />
     </Article>
   );
 };

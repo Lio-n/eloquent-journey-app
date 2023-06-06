@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { lazy, useState } from "react";
 import EditorBlock from "@/ui/EditorJs";
-import FormCreateArticle from "@/components/Dashboard/Article/formCreate";
 import type EditorJS from "@editorjs/editorjs";
+
+const LazyFormCreateArticle = lazy(() => import("@/components/Dashboard/Article/formCreate"));
 
 const ArticleCreate = () => {
   const [refEditor, setRef] = useState<EditorJS>();
@@ -10,7 +11,7 @@ const ArticleCreate = () => {
     <>
       <h3 style={{ marginTop: "var(--typography-spacing-vertical)" }}>Create Article</h3>
 
-      {refEditor && <FormCreateArticle editorJsRef={refEditor} />}
+      {refEditor && <LazyFormCreateArticle editorJsRef={refEditor} />}
       <EditorBlock holder="editorjs-container" getRef={setRef} />
     </>
   );

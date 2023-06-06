@@ -1,4 +1,6 @@
-import FormLogin from "@/components/Login/formLogin";
+import { lazy } from "react";
+
+const LazyFormLogin = lazy(() => import("@/components/Login/formLogin"));
 
 const Login = () => {
   return (
@@ -6,7 +8,7 @@ const Login = () => {
       <article style={{ maxWidth: "30rem", margin: "0 auto" }}>
         <h3 style={{ marginBottom: "1.5rem" }}>Sign in</h3>
 
-        <FormLogin />
+        <LazyFormLogin />
       </article>
     </div>
   );

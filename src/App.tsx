@@ -1,15 +1,15 @@
 import "@picocss/pico";
-import "./App.css";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import RoutesWithNotFound from "./utilities/RoutesWithNotFound.utility";
-import PrivateRoutes from "./routes/private.routes";
 import { PrivatePaths } from "./routes/path.routes";
-import PublicRoutes from "./routes/public.routes";
 import AuthGuard from "./guards/auth.guard";
 import store from "./lib/redux/store";
 import ToggleTheme from "./components/ToggleTheme";
+
+const LazyPublicRoutes = lazy(() => import("./routes/public.routes"));
+const LazyPrivateRoutes = lazy(() => import("./routes/private.routes"));
 
 function App() {
   return (
@@ -19,10 +19,10 @@ function App() {
           <BrowserRouter>
             <RoutesWithNotFound>
               <Route element={<ToggleTheme />}>
-                <Route path={`/*`} element={<PublicRoutes />} />
+                <Route path={`/*`} element={<LazyPublicRoutes />} />
 
                 <Route element={<AuthGuard />}>
-                  <Route path={`${PrivatePaths.DASHBOARD}/*`} element={<PrivateRoutes />} />
+                  <Route path={`${PrivatePaths.DASHBOARD}/*`} element={<LazyPrivateRoutes />} />
                 </Route>
               </Route>
             </RoutesWithNotFound>
