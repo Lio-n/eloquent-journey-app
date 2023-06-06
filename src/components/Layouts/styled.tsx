@@ -6,12 +6,13 @@ const Main = styled.main`
   #container_private,
   #container_public {
     margin: auto;
-    display: grid;
-    place-items: center;
-    max-width: 40rem;
   }
 
   #container_private {
+    max-width: 40rem;
+    display: grid;
+    place-items: center;
+
     h3 {
       border-bottom: solid var(--muted-color);
     }

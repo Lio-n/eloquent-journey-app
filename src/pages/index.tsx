@@ -1,3 +1,4 @@
+import ListOfArticles from "@/components/Home/listOfArticles";
 import { resetArticles } from "@/lib/redux/states/articles";
 import { AppStore } from "@/lib/redux/store";
 import { useEffect } from "react";
@@ -12,9 +13,11 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <h3 style={{ marginBottom: "1.5rem" }}>Articles</h3>
-    </>
+    <div style={{ marginBottom: "5rem" }}>
+      <h1 style={{ margin: "var(--typography-spacing-vertical)", color: "var(--primary)" }}>Eloquent Journey</h1>
+
+      <ListOfArticles articles={structuredClone(articlesState).reverse()} />
+    </div>
   );
 };
 

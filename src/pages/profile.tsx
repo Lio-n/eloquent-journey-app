@@ -7,6 +7,8 @@ import styled from "styled-components";
 import delay from "@/utilities/delay.utility";
 
 const Root = styled.article`
+  max-width: 40rem;
+
   .figure_avatar {
     margin: 0 auto var(--typography-spacing-vertical);
 
