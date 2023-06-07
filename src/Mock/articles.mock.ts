@@ -521,14 +521,6 @@ const MockArticleFive: ArticleInfo = {
         text: "To\n understand why this happens, it’s helpful to know a bit about how React\n works under the hood. When a component is rendered, React creates a \nvirtual DOM tree that represents the current state of the UI. This tree \nis then compared to the previous tree to determine which parts of the UI\n need to be updated. If a component returns <b>null</b>,\n it effectively tells React that it doesn't need to render anything at \nall. However, this can cause problems when the component's children have\n state or props that need to be updated.",
       },
     },
-    { id: "FLcF0NGZ2i", type: "paragraph", data: { text: "Consider the following example:" } },
-    {
-      id: "pobhokkE3b",
-      type: "code",
-      data: {
-        code: "function Parent() {\n  return (\n    <div>\n      <Child />\n    </div>\n  );\n}\n\nfunction Child() {\n  const [count, setCount] = useState(0);\n\n  useEffect(() => {\n    console.log('Child rendered');\n  });\n\n  if (count === 0) {\n    return null;\n  }\n\n  return (\n    <div>\n      <button onClick={() => setCount(count - 1)}>-</button>\n      {count}\n      <button onClick={() => setCount(count + 1)}>+</button>\n    </div>\n  );\n}",
-      },
-    },
     {
       id: "Q-kV7e-4xV",
       type: "paragraph",
@@ -542,18 +534,6 @@ const MockArticleFive: ArticleInfo = {
       type: "paragraph",
       data: {
         text: "Instead of using <b>return null</b>, a better approach is to use <b>return false</b>. When a component returns<b> false</b>, React treats it as if it had returned <b>null</b>,\n but it also tells React not to render any of the component's children. \nThis ensures that the component and its children remain connected to the\n tree, avoiding the issues that can arise from using <b>return null</b>.",
-      },
-    },
-    {
-      id: "sbzsaf7pHR",
-      type: "paragraph",
-      data: { text: "Here’s an updated version of the previous example that uses <b>return false</b> instead:" },
-    },
-    {
-      id: "8gIP--uS3T",
-      type: "code",
-      data: {
-        code: "function Parent() {\n  return (\n    <div>\n      <Child />\n    </div>\n  );\n}\n\nfunction Child() {\n  const [count, setCount] = useState(0);\n\n  useEffect(() => {\n    console.log('Child rendered');\n  });\n\n  if (count === 0) {\n    return false;\n  }\n\n  return (\n    <div>\n      <button onClick={() => setCount(count - 1)}>-</button>\n      {count}\n      <button onClick={() => setCount(count + 1)}>+</button>\n    </div>\n  );\n}",
       },
     },
     {

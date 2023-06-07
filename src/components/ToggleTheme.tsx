@@ -13,6 +13,7 @@ const Toggle = styled.div`
   top: 1rem;
   right: 1rem;
   z-index: 10;
+  width: 2.5rem;
 
   border-radius: 50%;
   padding: 0.5rem;
@@ -20,9 +21,13 @@ const Toggle = styled.div`
 
   background-color: var(--contrast-hover);
 
-  svg {
-    transition: all 0.2s ease-out;
-    color: var(--contrast-inverse);
+  & {
+    svg {
+      width: 100%;
+
+      transition: all 0.2s ease-out;
+      color: var(--contrast-inverse);
+    }
   }
 
   &:hover {
@@ -44,21 +49,16 @@ const ToggleTheme = () => {
   const changeTheme = () => dispatch(updateUser({ settings: { ...userState.settings, theme } }));
 
   useEffect(() => {
-    if (theme) {
-      userState.id === 1 && changeTheme();
-      switchTheme(theme);
-    }
+    console.log(theme);
+    userState.id === 1 && changeTheme();
+    switchTheme(theme);
   }, [theme]);
-
-  useEffect(() => {
-    if (userState.id === 1) setTheme(userState.settings.theme);
-  }, [userState.settings.theme, userState.id]);
 
   return (
     <>
-      <Toggle>
-        <MoonIcon className="display_none" onClick={() => setTheme("dark")} />
-        <SunIcon onClick={() => setTheme("light")} />
+      <Toggle onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+        <MoonIcon className="display_none" />
+        <SunIcon />
       </Toggle>
 
       <Outlet />

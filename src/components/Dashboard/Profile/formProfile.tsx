@@ -37,10 +37,10 @@ const FormProfile = () => {
 
     disableElements(e, true);
 
-    const { email, fullname, aboutMe } = parseDataForm(e);
+    const { fullname, aboutMe } = parseDataForm(e);
 
     delay(async () => {
-      const result = await updateUserApi({ email, fullname, aboutMe, avatar });
+      const result = await updateUserApi({ fullname, aboutMe, avatar });
 
       if (result) {
         dispatch(updateUser(result));
@@ -68,7 +68,7 @@ const FormProfile = () => {
                 placeholder={userState.email}
                 aria-label="Input Email"
                 defaultValue={userState.email}
-                required
+                readOnly
               />
             </label>
 

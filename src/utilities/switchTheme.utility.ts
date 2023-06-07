@@ -1,4 +1,4 @@
-const switchTheme = (switchTo: "light" | "dark"): void => {
+const switchTheme = (switchTo: string): void => {
   const htmlElem = document?.querySelector("html");
   const sunIconElem = document?.getElementById("sunIcon");
   const moonIconElem = document?.getElementById("moonIcon");

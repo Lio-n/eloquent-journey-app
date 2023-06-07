@@ -1,3 +1,4 @@
+import MockArticlesHits from "@/Mock/articles.mock";
 import { ArticlesKey } from "@/lib/redux/states/articles";
 import ArticleInfo, { ArticleListInfo } from "@/models/article.model";
 import cleanArticleData from "@/utilities/cleanArticleData.utility";
@@ -51,7 +52,7 @@ const updateArticleApi = async ({ article, isPrivate, id }: { article: OutputDat
 const getListOfArticlesApi = (query: QueryOptions): QueryResponse<ArticleListInfo> => {
   const { offset = 0, limit = 7, order = "desc" } = query;
 
-  const data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : [];
+  const data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : MockArticlesHits;
 
   const length = data.length;
 

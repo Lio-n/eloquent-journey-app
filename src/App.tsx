@@ -7,6 +7,7 @@ import { PrivatePaths } from "./routes/path.routes";
 import AuthGuard from "./guards/auth.guard";
 import store from "./lib/redux/store";
 import ToggleTheme from "./components/ToggleTheme";
+import LoadingPlaceholder from "./utilities/LoadingPlaceholder.utility";
 
 const LazyPublicRoutes = lazy(() => import("./routes/public.routes"));
 const LazyPrivateRoutes = lazy(() => import("./routes/private.routes"));
@@ -14,7 +15,7 @@ const LazyPrivateRoutes = lazy(() => import("./routes/private.routes"));
 function App() {
   return (
     <div id="app">
-      <Suspense fallback={<>Cargando</>}>
+      <Suspense fallback={<LoadingPlaceholder />}>
         <Provider store={store}>
           <BrowserRouter>
             <RoutesWithNotFound>
