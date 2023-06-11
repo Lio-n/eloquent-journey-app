@@ -51,7 +51,7 @@ const Root = styled.div`
 `;
 
 const ArticleById = () => {
-  const [articleHtml, setArticleHtml] = useState();
+  const [articleHtml, setArticleHtml] = useState<string | null>(null);
   const { article_id } = useParams();
   const navigate = useNavigate();
   const [article, setArticle] = useState<ArticleInfo>();
