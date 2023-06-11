@@ -1,4 +1,3 @@
-import MockArticlesHits from "@/Mock/articles.mock";
 import { ArticlesKey } from "@/lib/redux/states/articles";
 import ArticleInfo, { ArticleListInfo } from "@/models/article.model";
 import cleanArticleData from "@/utilities/cleanArticleData.utility";
@@ -6,6 +5,7 @@ import getRandomNum from "@/utilities/genRandomNum.utility";
 import { getLocalStorage } from "@/utilities/localStorage.utility";
 import toShortFormat from "@/utilities/toShortFormat.utility";
 import type { OutputData } from "@editorjs/editorjs";
+import initMockArticleData from "../helper/initMockArticleData";
 
 const createArticleApi = async ({ article, isPrivate }: { article: OutputData; isPrivate: boolean }): Promise<ArticleInfo> => {
   const dataCleared = cleanArticleData(article.blocks);
@@ -52,7 +52,7 @@ const updateArticleApi = async ({ article, isPrivate, id }: { article: OutputDat
 const getListOfArticlesApi = (query: QueryOptions): QueryResponse<ArticleListInfo> => {
   const { offset = 0, limit = 7, order = "desc" } = query;
 
-  const data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : MockArticlesHits;
+  const data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : initMockArticleData();
 
   const length = data.length;
 

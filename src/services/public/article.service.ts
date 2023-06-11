@@ -1,10 +1,10 @@
-import MockArticlesHits from "@/Mock/articles.mock";
 import { ArticlesKey } from "@/lib/redux/states/articles";
-import ArticleInfo, { ArticleListInfo, ArticleThumbnailInfo } from "@/models/article.model";
+import ArticleInfo, { ArticleThumbnailInfo } from "@/models/article.model";
 import { getLocalStorage } from "@/utilities/localStorage.utility";
+import initMockArticleData from "../helper/initMockArticleData";
 
 const getArticleByIdApi = ({ id, hasToken }: { id: number; hasToken: boolean }): ArticleInfo => {
-  const data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : MockArticlesHits;
+  const data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : initMockArticleData();
 
   let article = [];
   if (hasToken) {
@@ -19,7 +19,7 @@ const getArticleByIdApi = ({ id, hasToken }: { id: number; hasToken: boolean }):
 const getArticlesThumbnailApi = (query: QueryOptions): QueryResponse<ArticleThumbnailInfo> => {
   const { offset = 0, limit = 10, order = "desc" } = query;
 
-  let data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : MockArticlesHits;
+  let data = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : initMockArticleData();
 
   data = structuredClone(data);
 

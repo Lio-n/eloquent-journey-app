@@ -13,7 +13,6 @@ const Home = () => {
     const query: QueryOptions = { limit: 10, offset: 0, order: "desc" };
 
     const res = getArticlesThumbnailApi(query);
-
     setArticles(res);
   }, [articlesState]);
 

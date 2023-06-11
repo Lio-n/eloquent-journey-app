@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
-import { clearLocalStorage, getLocalStorage, persistLocalStorage } from "@/utilities/localStorage.utility";
+import { getLocalStorage, persistLocalStorage } from "@/utilities/localStorage.utility";
 import ArticleInfo from "@/models/article.model";
-import MockArticlesHits, { MockEmptyArticlesState } from "@/Mock/articles.mock";
+import MockArticlesHits from "@/Mock/articles.mock";
 
 export const ArticlesKey = "articles";
 
-const initialState = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : MockEmptyArticlesState;
+const initialState = getLocalStorage(ArticlesKey) ? JSON.parse(getLocalStorage(ArticlesKey) as string) : MockArticlesHits;
 
 export const articlesSlice = createSlice({
   name: "articles",
