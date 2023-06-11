@@ -17,7 +17,7 @@ const Home = () => {
   }, [articlesState]);
 
   return (
-    <div style={{ marginBottom: "5rem" }}>
+    <div style={{ marginBottom: "10rem" }}>
       <h1 style={{ margin: "var(--typography-spacing-vertical)", color: "var(--primary)" }}>Eloquent Journey</h1>
 
       <ListOfArticles articles={articles.hits} />

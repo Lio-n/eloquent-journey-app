@@ -13,7 +13,6 @@ import validateBody from "./helper/validateBody";
 import TrashIcon from "@/ui/icons/trashIcon";
 
 const Form = styled.form`
-  width: 100%;
   padding: 0.5rem;
 
   @media (min-width: 550px) {
@@ -33,6 +32,16 @@ const Form = styled.form`
     button {
       max-width: 9rem;
       margin: 0;
+    }
+  }
+
+  .form__container_buttons {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      width: fit-content;
+      height: fit-content;
     }
   }
 `;
@@ -109,17 +118,20 @@ const FormUpdateArticle = ({ editorJsRef, data }: { editorJsRef: EditorJS; data:
           Make private
         </label>
       </fieldset>
-      <button id="submit_btn" onSubmit={handleSubmit}>
-        Update
-      </button>
-      <button id="clean_btn" type="button" onClick={handleCleanArticle}>
-        <BroomIcon />
-        Clean
-      </button>
-      <button id="delete_btn" type="button" onClick={handleDeleteArticle}>
-        <TrashIcon />
-        Delete
-      </button>
+
+      <div className="form__container_buttons">
+        <button id="submit_btn" onSubmit={handleSubmit}>
+          Update
+        </button>
+        <button id="clean_btn" type="button" onClick={handleCleanArticle}>
+          <BroomIcon />
+          Clean
+        </button>
+        <button id="delete_btn" type="button" onClick={handleDeleteArticle}>
+          <TrashIcon />
+          Delete
+        </button>
+      </div>
     </Form>
   );
 };

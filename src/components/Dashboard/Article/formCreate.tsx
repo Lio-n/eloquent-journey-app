@@ -9,8 +9,12 @@ import delay from "@/utilities/delay.utility";
 import validateBody from "./helper/validateBody";
 
 const Form = styled.form`
-  width: 100%;
   padding: 0.5rem;
+
+  .form__container_buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
 
   @media (min-width: 550px) {
     &,
@@ -28,6 +32,16 @@ const Form = styled.form`
 
     button {
       max-width: 8rem;
+    }
+  }
+
+  .form__container_buttons {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      width: fit-content;
+      height: fit-content;
     }
   }
 `;
@@ -81,13 +95,15 @@ const FormCreateArticle = ({ editorJsRef }: { editorJsRef: EditorJS }) => {
           Make private
         </label>
       </fieldset>
-      <button id="submit_btn" onSubmit={handleSubmit}>
-        Create
-      </button>
-      <button id="clean_btn" type="button" onClick={handleCleanArticle}>
-        <BroomIcon />
-        Clean
-      </button>
+      <div className="form__container_buttons">
+        <button id="submit_btn" onSubmit={handleSubmit}>
+          Create
+        </button>
+        <button id="clean_btn" type="button" onClick={handleCleanArticle}>
+          <BroomIcon />
+          Clean
+        </button>
+      </div>
     </Form>
   );
 };

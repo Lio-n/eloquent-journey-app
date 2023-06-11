@@ -44,7 +44,7 @@ const Article = styled.article`
       gap: 2rem;
 
       .avatar {
-        width: 15rem;
+        width: 40rem;
       }
     }
   }

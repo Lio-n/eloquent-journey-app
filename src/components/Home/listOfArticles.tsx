@@ -1,4 +1,4 @@
-import ArticleInfo, { ArticleThumbnailInfo } from "@/models/article.model";
+import { ArticleThumbnailInfo } from "@/models/article.model";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,10 +12,18 @@ const Ul = styled.ul`
 
   li {
     list-style-type: none;
+    width: 100%;
   }
 
   a {
     text-decoration: none;
+  }
+
+  @media (min-width: 697px) {
+    li {
+      /* max-height: 13rem; */
+      width: initial;
+    }
   }
 `;
 
@@ -30,22 +38,21 @@ const Card = styled.article`
   }
 
   @media (min-width: 697px) {
-    .article_thumbnail {
-      max-height: 22rem;
-    }
     & {
-      max-width: 20rem;
+      width: 20rem;
+      height: 24rem;
     }
   }
 
   .article_thumbnail {
-    max-height: 22rem;
+    max-height: 13rem;
 
     margin-bottom: var(--typography-spacing-vertical);
   }
 
   .article_title {
     margin-bottom: 1rem;
+    word-break: break-word;
   }
 
   .article_title,

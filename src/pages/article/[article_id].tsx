@@ -6,6 +6,7 @@ import ArticleInfo from "@/models/article.model";
 import { getArticleByIdApi } from "@/services/public/article.service";
 import { useNavigate, useParams } from "react-router-dom";
 import { OutputBlockData } from "@editorjs/editorjs";
+import ProgressBar from "@/ui/ProgressBar";
 
 const parseJsonToHtml = (jsonData: { blocks: OutputBlockData[] }) => {
   const edjsParser = editorjsHTML();
@@ -71,6 +72,8 @@ const ArticleById = () => {
 
   return (
     <Root>
+      <ProgressBar />
+
       {articleHtml && <div style={{ display: "grid", gap: "1rem" }} dangerouslySetInnerHTML={{ __html: articleHtml }} />}
       {article && <h3 className="article_date">{article.createdAt}</h3>}
     </Root>
