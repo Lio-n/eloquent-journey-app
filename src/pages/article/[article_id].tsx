@@ -5,8 +5,9 @@ import styled from "styled-components";
 import ArticleInfo from "@/models/article.model";
 import { getArticleByIdApi } from "@/services/public/article.service";
 import { useNavigate, useParams } from "react-router-dom";
+import { OutputBlockData } from "@editorjs/editorjs";
 
-const parseJsonToHtml = (jsonData: unknown) => {
+const parseJsonToHtml = (jsonData: { blocks: OutputBlockData[] }) => {
   const edjsParser = editorjsHTML();
   const edjsParser_html = edjsParser.parse(jsonData);
 
