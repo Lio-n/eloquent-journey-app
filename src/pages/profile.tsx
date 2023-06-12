@@ -11,6 +11,8 @@ const Article = styled.article`
 
   .figure_avatar {
     margin: 0 auto var(--typography-spacing-vertical);
+    width: 100%;
+    text-align: center;
 
     .avatar {
       border-radius: 50%;
@@ -44,7 +46,7 @@ const Article = styled.article`
       gap: 2rem;
 
       .avatar {
-        width: 40rem;
+        width: 15rem;
       }
     }
   }

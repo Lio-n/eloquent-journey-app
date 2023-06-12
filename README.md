@@ -23,10 +23,9 @@
 ## Privadas
 
 - /dashboard/profile
-  - Cada autor podra ver info relacionada a su trabajo, Tales como:
-    - Cantidad de publicaciones.
-    - Cantidad Publicaciones privadas y publicas.
-    - Etc.
+- /dashboard/settings
+- /dashboard/articles/list
+- /dashboard/:article_id/edit
 
 # En progreso...
 
