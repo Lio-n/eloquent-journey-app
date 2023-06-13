@@ -39,10 +39,8 @@ const Root = styled.div`
   }
 
   img {
-    border-radius: 5px;
-    margin: 1rem 0;
-    width: 100%;
-    max-height: 20rem;
+    margin: 1rem auto;
+    max-height: 35rem;
     object-fit: contain;
   }
 
