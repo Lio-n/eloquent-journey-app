@@ -37,7 +37,7 @@ const compressImage = async (file: any): Promise<any> => {
     new Compressor(file, {
       maxHeight: 400,
       maxWidth: 700,
-      quality: 0.5, // set the desired quality level
+      quality: 1, // set the desired quality level
       success: (result: any) => {
         uploadImage(resolve, result);
       },
