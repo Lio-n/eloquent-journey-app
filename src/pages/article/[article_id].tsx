@@ -33,7 +33,8 @@ const Root = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  h1 {
+  h1,
+  h2 {
     text-align: center;
   }
 

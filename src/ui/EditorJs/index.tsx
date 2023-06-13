@@ -15,6 +15,11 @@ const EditorRoot = styled.div`
     height: calc(-18rem + 100vh);
   }
 
+  h1,
+  h2 {
+    text-align: center;
+  }
+
   @media (min-width: 840px) {
     height: initial;
   }

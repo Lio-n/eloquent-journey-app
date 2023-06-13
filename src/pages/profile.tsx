@@ -44,10 +44,6 @@ const Article = styled.article`
     @media (min-width: 992px) {
       display: flex;
       gap: 2rem;
-
-      .avatar {
-        width: 15rem;
-      }
     }
   }
 `;

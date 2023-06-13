@@ -21,7 +21,6 @@ const Ul = styled.ul`
 
   @media (min-width: 697px) {
     li {
-      /* max-height: 13rem; */
       width: initial;
     }
   }
@@ -57,6 +56,11 @@ const Card = styled.article`
 
   .article_title,
   .article_description {
+    -webkit-line-clamp: 3;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+
     width: fit-content;
 
     a {

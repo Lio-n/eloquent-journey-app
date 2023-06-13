@@ -51,12 +51,20 @@ const FormLogin = () => {
       <form action="submit" onSubmit={handleSubmit} style={{ margin: "0" }}>
         <label htmlFor="email">
           Email address
-          <input type="email" id="email" name="email" placeholder="Email address" aria-label="Input Email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email address"
+            aria-label="Input Email"
+            required
+            defaultValue={"john.doe@gmail.com"}
+          />
         </label>
 
         <label htmlFor="password">
           Password
-          <input type="text" id="password" name="password" aria-label="Input Password" placeholder="Password" required />
+          <input type="text" id="password" name="password" aria-label="Input Password" placeholder="Password" required defaultValue={"johnny27"} />
         </label>
 
         <button id="form_btn" onSubmit={handleSubmit} style={{ margin: "0" }}>
